@@ -6,6 +6,6 @@ http.createServer(async (req, res) => {
         'Content-Type': 'application/json; charset=utf-8;',
         'Access-Control-Allow-Origin': '*'
     });
-    // res.write(JSON.stringify(dtro(), null, 4));
+    res.write(JSON.stringify(dtro(), null, 4));
     res.end();
 }).listen(81);
