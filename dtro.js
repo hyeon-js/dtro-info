@@ -24,6 +24,23 @@ function getTrainList(line) {
         };
     });
 
+    var date = new Date();
+    var hour = date.getHours();
+    if (hour == 0) hour = 24;
+    var now = 60 * 60 * hour + 60 * date.getMinutes() + date.getSeconds();
+    
+    var day = 0; //평일
+    if (date.getDay() == 0) day = 1; //일요일
+    if( date.getDay() == 6) { //토요일
+        if (line == 3) day = 1; //일요일 시간표랑 동일
+        else day = 2;
+    }
+    
+    var fileName = 'timetable/line' + line + '_' + day + '.json';
+
+    var data = fs.readFileSync(fileName).toString();
+    data = JSON.parse(data);
+    console.log(data)
 
     return result;
 }
