@@ -31,10 +31,7 @@ function getTrainList(line) {
 
     var day = 0; //평일
     if (date.getDay() == 0) day = 1; //일요일
-    if( date.getDay() == 6) { //토요일
-        if (line == 3) day = 1; //일요일 시간표랑 동일
-        else day = 2;
-    }
+    if (date.getDay() == 6) day = 1; //토요일
     
     var fileName = 'timetable/line' + line + '_' + day + '.json';
     var data = fs.readFileSync(fileName).toString();
